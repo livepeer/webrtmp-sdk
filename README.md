@@ -9,17 +9,17 @@ JavaScript SDK for streaming media via RTMP from the Web.
 Add the following script tag to the header of your HTML file:
 
 ```html
-<script src="https://unpkg.com/webrtmp-sdk"></script>
+<script src="https://unpkg.com/@livepeer/webrtmp-sdk@0.1.0-rc/dist/index.js"></script>
 ```
 ### yarn
 
 ```sh
-yarn add webrtmp-sdk
+yarn add @livepeer/webrtmp-sdk
 ```
 
 ### npm
 ```sh
-npm install webrtmp-sdk
+npm install @livepeer/webrtmp-sdk
 ```
 
 ## Import
