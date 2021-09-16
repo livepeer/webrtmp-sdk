@@ -5,25 +5,26 @@ import { Client } from '@livepeer/webrtmp-sdk'
 function App() {
   const inputEl = useRef(null)
   const videoEl = useRef(null)
+  const stream = useRef(null)
 
-  let stream
+  useEffect(() => {
+    ;(async () => {
+      videoEl.current.volume = 0
 
-  useEffect(async () => {
-    videoEl.current.volume = 0
-
-    stream = await navigator.mediaDevices.getUserMedia({
-      video: true,
-      audio: true,
-    })
-
-    videoEl.current.srcObject = stream
-    videoEl.current.play()
+      stream.current = await navigator.mediaDevices.getUserMedia({
+        video: true,
+        audio: true,
+      })
+  
+      videoEl.current.srcObject = stream.current
+      videoEl.current.play()
+    })()
   })
 
   const onButtonClick = async () => {
     const streamKey = inputEl.current.value
 
-    if (!stream) {
+    if (!stream.current) {
       alert('Video stream was not started.')
     }
 
@@ -36,7 +37,7 @@ function App() {
       baseUrl: 'fly.justcast.it'
     })
 
-    const session = client.cast(stream, streamKey)
+    const session = client.cast(stream.current, streamKey)
 
     session.on('open', () => {
       console.log('Stream started.')
