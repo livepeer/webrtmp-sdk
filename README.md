@@ -66,6 +66,8 @@ async function start() {
     console.log('Stream error.', err.message)
   })
 }
+
+start()
 ```
 
 In order to stream through Livepeer, you are going to need a secret `streamKey`, which can be obtained by following these steps:
