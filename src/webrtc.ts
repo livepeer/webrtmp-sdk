@@ -6,7 +6,7 @@ async function iceHandshake(
   streamKey: string,
   localDesc: RTCSessionDescription
 ) {
-  const protocol = secure ? 'wss' : 'ws'
+  const protocol = secure ? 'https' : 'http'
 
   const qsKey = streamKey.includes('://') ? 'rtmp' : 'streamKey'
 
@@ -75,7 +75,7 @@ function castViaWebRTC(
 
   pc.onconnectionstatechange = () => {
     const state = pc.connectionState
-    
+
     switch (state) {
       case 'connected':
         cast.emit('open')
