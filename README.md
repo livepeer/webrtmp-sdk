@@ -81,6 +81,8 @@ For a full working example, checkout this awesome project: https://github.com/vi
 
 The examples folder at the root of this repo contains two projects: [webrtmp-static](examples/webrtmp-static), implemented in HTML, CSS and JavaScript and [webrtmp-react](examples/webrtmp-react), implemented with React (created using [create-react-app](https://github.com/facebook/create-react-app)).
 
+Check out this [webrtmp-static on CodePen](https://codepen.io/samuelmtimbo/pen/QWgaZGL).
+
 ## Contributing
 
 Pull Requests are welcome.
