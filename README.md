@@ -44,7 +44,7 @@ const client = new Client({
   transport: 'auto'
 })
 
-const streamKey = 'foo-bar-zaz-tar' // change to your secret stream key
+const streamKey = '{{STREAM_KEY}}'
 
 async function start() {
   const stream = await navigator.mediaDevices.getUserMedia({
@@ -68,9 +68,18 @@ async function start() {
 }
 ```
 
+In order to stream through Livepeer, you are going to need a secret `streamKey`, which can be obtained by following these steps:
+
+1) Create Livepeer Account at https://www.livepeer.com;
+2) Go to Livepeer Dashboard;
+3) Create a stream;
+4) Grab the stream key and replace it in the example `{{STREAM_KEY}}` (note that if you have multiple users streaming you'll need a backend API to create the stream through Livepeer API and return stream key for each of them. Check out [Livepeer API Documentation](https://livepeer.com/docs/guides) on how to [create a stream](https://livepeer.com/docs/guides/start-live-streaming/create-a-stream));
+
+For a full working example, checkout this awesome project: https://github.com/victorges/justcast.it
+
 ## Examples
 
-The examples folder at the root of this repo contains two projects: [webrtmp-static](examples/webrtmp-static), implemented in Vanilla HTML, CSS and JavaScript and [webrtmp-react](examples/webrtmp-react), implemented with React (created using [create-react-app]()).
+The examples folder at the root of this repo contains two projects: [webrtmp-static](examples/webrtmp-static), implemented in HTML, CSS and JavaScript and [webrtmp-react](examples/webrtmp-react), implemented with React (created using [create-react-app](https://github.com/facebook/create-react-app)).
 
 ## Contributing
 
