@@ -40,7 +40,9 @@ function connect(
 ) {
   const protocol = secure ? 'wss' : 'ws'
 
-  const query = querystring({ streamKey, mimeType })
+  const qsKey = streamKey.includes('://') ? 'rtmp' : 'streamKey'
+
+  const query = querystring({ [qsKey]: streamKey, mimeType })
 
   const url = `${protocol}://${baseUrl}/ws${query}`
 
