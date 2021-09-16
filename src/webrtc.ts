@@ -11,7 +11,7 @@ async function iceHandshake(
   const qsKey = streamKey.includes('://') ? 'rtmp' : 'streamKey'
 
   const answer = await fetch(
-    `${protocol}://${baseUrl}/webrtc/offer?${qsKey}=${streamKey}`,
+    `${protocol}://${baseUrl}/wrtc/offer?${qsKey}=${streamKey}`,
     {
       method: 'POST',
       body: JSON.stringify(localDesc),
