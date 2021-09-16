@@ -1,0 +1,12 @@
+{
+  "name": "webrtmp-static",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "serve ."
+  },
+  "devDependencies": {
+    "serve": "12.0.1"
+  }
+}

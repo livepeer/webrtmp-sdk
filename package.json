@@ -7,8 +7,8 @@
   "author": "Samuel Timbó <samuelmtimbo@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "lib": "rm -rf lib; tsc",
-    "build": "esbuild --bundle --minify --log-level=error ./src/web.ts --outfile=./dist/index.js"
+    "lib": "rm -rf lib; tsc; tsc --outDir ./examples/webrtmp-react/src/webrtmp-sdk",
+    "build": "esbuild --bundle --minify --log-level=error ./src/web.ts --outfile=./dist/index.js --outfile=./examples/webrtmp-static/webrtmp-sdk/dist/index.js"
   },
   "dependencies": {
     "events": "3.3.0"

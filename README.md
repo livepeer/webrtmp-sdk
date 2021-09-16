@@ -70,11 +70,7 @@ async function start() {
 
 ## Examples
 
-// TODO
-
-## API
-
-// TODO
+The examples folder at the root of this repo contains two projects: [webrtmp-static](examples/webrtmp-static), implemented in Vanilla HTML, CSS and JavaScript and [webrtmp-react](examples/webrtmp-react), implemented with React (created using [create-react-app]()).
 
 ## Contributing
 
