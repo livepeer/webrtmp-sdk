@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import './App.css'
-import { Client } from './webrtmp-sdk'
+import { Client } from '@livepeer/webrtmp-sdk'
 
 function App() {
   const inputEl = useRef(null)
