@@ -4,7 +4,6 @@ import { Client } from '@livepeer/webrtmp-sdk'
 
 function App() {
   const inputEl = useRef(null)
-
   const videoEl = useRef(null)
 
   let stream
@@ -41,6 +40,7 @@ function App() {
 
     session.on('open', () => {
       console.log('Stream started.')
+      alert('Stream started; visit Livepeer Dashboard.')
     })
 
     session.on('close', () => {

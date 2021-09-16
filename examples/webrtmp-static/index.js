@@ -40,6 +40,7 @@ button.onclick = () => {
 
   session.on('open', () => {
     console.log('Stream started.')
+    alert('Stream started; visit Livepeer Dashboard.')
   })
 
   session.on('close', () => {
