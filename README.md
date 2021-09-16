@@ -47,7 +47,7 @@ const client = new Client({
 const streamKey = 'foo-bar-zaz-tar' // change to your secret stream key
 
 async function start() {
-  const stream = await getUserMedia({
+  const stream = await navigator.mediaDevices.getUserMedia({
     video: true,
     audio: true
   })
