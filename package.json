@@ -1,0 +1,22 @@
+{
+  "name": "webrtmp-sdk",
+  "version": "1.0.0",
+  "description": "JavaScript SDK for streaming media via RTMP from the Web.",
+  "main": "dist/index.js",
+  "repository": "git@github.com:livepeer/webrtmp-sdk.git",
+  "author": "Samuel Timbó <samuelmtimbo@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "lib": "rm -rf lib; tsc",
+    "build": "esbuild --bundle --minify --log-level=error ./src/web.ts --outfile=./dist/index.js"
+  },
+  "dependencies": {
+    "events": "3.3.0"
+  },
+  "devDependencies": {
+    "@types/events": "^3.0.0",
+    "esbuild": "0.12.28",
+    "prettier": "2.4.0",
+    "typescript": "4.4.3"
+  }
+}
