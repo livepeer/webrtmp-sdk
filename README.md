@@ -4,6 +4,9 @@ JavaScript SDK for streaming media via RTMP from the Web. Originally designed
 for [Livepeer.com](livepeer.com), but can be used for any other service by
 running your own [webrtmp-server](https://github.com/livepeer/webrtmp-server).
 
+> This SDK works best on Chrome Desktop, as it currently only supports WebSocket on H.264-capable browsers. We are working on WebRTC support to allow the use of non-Chrome and non-Desktop browsers. Check out the [Browser Support](#browser-support) section for more.
+
+
 ## Installation
 
 ### CDN
@@ -45,7 +48,7 @@ In order to stream through Livepeer, you are going to need a secret `streamKey`,
 which can be obtained by following these steps:
 
 1) Create Livepeer Account at [livepeer.com](https://www.livepeer.com);
-2) Go to the Livepeer [Streams Dashboard](https://www.livepeer.com/dashboard/streams)
+2) Go to the Livepeer [Streams Dashboard](https://www.livepeer.com/dashboard/streams);
 3) Create a stream;
 4) Grab the stream key and replace the `{{STREAM_KEY}}` in the example below.
 
@@ -86,6 +89,18 @@ start()
 > Documentation](https://livepeer.com/docs/guides) on how to [get an API
 > key](https://livepeer.com/docs/guides/start-live-streaming/api-key) and then
 > how to [create a stream](https://livepeer.com/docs/guides/start-live-streaming/create-a-stream).
+
+## Browser Support
+
+We provide a utility function to check whether the current browser is supported by the SDK:
+
+```js
+const { isSupported } = require('@livepeer/webrtmp-sdk')
+
+if (!isSupported()) {
+  alert('webrtmp-sdk is not currently supported on this browser')
+}
+```
 
 ## Examples
 

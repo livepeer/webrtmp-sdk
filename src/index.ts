@@ -1,6 +1,6 @@
 import { CastSession } from './CastSession'
 import castViaWebRTC from './webrtc'
-import castViaWebSocket from './websocket'
+import castViaWebSocket, { getMimeType } from './websocket'
 
 export type Protocol = 'ws' | 'wrtc' | 'auto'
 
@@ -42,6 +42,12 @@ export class Client {
       )
     }
   }
+}
+
+export function isSupported(): boolean {
+  const mimeType = getMimeType()
+  const supported = mimeType.includes('h264')
+  return supported
 }
 
 export { CastSession } from './CastSession'
