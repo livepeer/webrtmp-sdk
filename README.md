@@ -96,7 +96,7 @@ The `examples` folder at the root of this repository contains two projects:
  - [webrtmp-react](examples/webrtmp-react), implemented with React (created
    using [create-react-app](https://github.com/facebook/create-react-app)).
 
-For a full working example, checkout [justcast.it](https://justcast.it) ([source
+For a full working example, check out [justcast.it](https://justcast.it) ([source
 code](https://github.com/victorges/justcast.it)).
 
 ## Contributing
