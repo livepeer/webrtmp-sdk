@@ -1,4 +1,3 @@
-import { EventEmitter } from 'events'
 import { CastSession } from './CastSession'
 
 async function iceHandshake(

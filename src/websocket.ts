@@ -1,4 +1,3 @@
-import { EventEmitter } from 'events'
 import { CastSession } from './CastSession'
 
 export class WebSocketError extends Error {
