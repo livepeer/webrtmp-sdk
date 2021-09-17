@@ -5,7 +5,7 @@ export class CastSession {
 
   on(type: 'open', listener: () => void): this
   on(type: 'close', listener: () => void): this
-  on(type: 'error', listener: (isTransient: boolean) => void): this
+  on(type: 'error', listener: (err: Error) => void): this
   on(type: string, listener: Listener): this {
     this._emitter.on(type, listener)
     return this
