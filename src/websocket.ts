@@ -6,7 +6,7 @@ export class WebSocketError extends Error {
   }
 }
 
-function getMimeType(): string | null {
+export function getMimeType(): string | null {
   const types = [
     'video/webm;codecs=h264',
     'video/webm',
