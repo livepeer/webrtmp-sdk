@@ -1,3 +1,4 @@
+import { EventEmitter } from 'events'
 import { CastSession } from './CastSession'
 
 function getMimeType(): string | null {
@@ -98,7 +99,8 @@ function castViaWebSocket(
     videoBitsPerSecond: 3 * 1024 * 1024,
   })
 
-  const cast = new CastSession(() => {
+  const emitter = new EventEmitter()
+  const cast = new CastSession(emitter, () => {
     stop_recording(recorder, socket)
   })
 
@@ -117,7 +119,7 @@ function castViaWebSocket(
 
     start_media_recorder(recorder)
 
-    cast.emit('open')
+    emitter.emit('open')
   })
 
   socket.addEventListener('close', ({ code, reason }) => {
@@ -126,10 +128,10 @@ function castViaWebSocket(
     stop_recording(recorder, socket)
 
     if (code !== 1000) {
-      cast.emit('error', code === 1006)
+      emitter.emit('error', code === 1006)
     }
 
-    cast.emit('close')
+    emitter.emit('close')
   })
 
   return cast

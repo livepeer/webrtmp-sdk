@@ -1,3 +1,4 @@
+import { EventEmitter } from 'events'
 import { CastSession } from './CastSession'
 
 async function iceHandshake(
@@ -44,7 +45,8 @@ function castViaWebRTC(
     ],
   })
 
-  const cast = new CastSession(() => {
+  const emitter = new EventEmitter()
+  const cast = new CastSession(emitter, () => {
     pc.close()
   })
 
@@ -69,7 +71,7 @@ function castViaWebRTC(
         await pc.setRemoteDescription(remoteDesc)
       }
     } catch (err) {
-      cast.emit('error', err)
+      emitter.emit('error', err)
     }
   }
 
@@ -78,13 +80,13 @@ function castViaWebRTC(
 
     switch (state) {
       case 'connected':
-        cast.emit('open')
+        emitter.emit('open')
         break
       case 'closed':
-        cast.emit('closed')
+        emitter.emit('closed')
         break
       case 'failed':
-        cast.emit('error', new Error('WebRTC connection failed.'))
+        emitter.emit('error', new Error('WebRTC connection failed.'))
         break
     }
   }
@@ -94,7 +96,7 @@ function castViaWebRTC(
       const offer = await pc.createOffer()
       await pc.setLocalDescription(offer)
     } catch (err) {
-      cast.emit('error', err)
+      emitter.emit('error', err)
     }
   }
 
