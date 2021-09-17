@@ -1,6 +1,8 @@
-# webrtmp-sdk
+# webrtmp-sdk [![npm version](https://badge.fury.io/js/@livepeer%2Fwebrtmp-sdk.svg)](https://badge.fury.io/js/@livepeer%2Fwebrtmp-sdk)
 
-JavaScript SDK for streaming media via RTMP from the Web.
+JavaScript SDK for streaming media via RTMP from the Web. Originally designed
+for [Livepeer.com](livepeer.com), but can be used for any other service by
+running your own [webrtmp-server](https://github.com/livepeer/webrtmp-server).
 
 ## Installation
 
@@ -9,27 +11,29 @@ JavaScript SDK for streaming media via RTMP from the Web.
 Add the following script tag to the header of your HTML file:
 
 ```html
-<script src="https://unpkg.com/@livepeer/webrtmp-sdk@0.1.0-rc/dist/index.js"></script>
+<script src="https://unpkg.com/@livepeer/webrtmp-sdk@0.1.2/dist/index.js"></script>
 ```
-### yarn
+
+The API will be available as a global named `webRTMP`:
+
+```js
+const { Client } = webRTMP
+```
+
+### Package Managers
+
+#### yarn
 
 ```sh
 yarn add @livepeer/webrtmp-sdk
 ```
 
-### npm
+#### npm
 ```sh
 npm install @livepeer/webrtmp-sdk
 ```
 
-## Import
-
-If the library was loaded through an inline script, the API will be available as a global named `webRTMP`:
-```js
-const { Client } = webRTMP
-```
-
-If it was installed through npm or yarn:
+The API can then be imported as a regular module:
 
 ```js
 const { Client } = require('webrtmp-sdk')
@@ -37,16 +41,21 @@ const { Client } = require('webrtmp-sdk')
 
 ## Usage
 
-```js
-const client = new Client({
-  secure: true,
-  baseUrl: 'origin.livepeer.com/webrtmp',
-  transport: 'auto'
-})
+In order to stream through Livepeer, you are going to need a secret `streamKey`,
+which can be obtained by following these steps:
 
-const streamKey = '{{STREAM_KEY}}'
+1) Create Livepeer Account at [livepeer.com](https://www.livepeer.com);
+2) Go to the Livepeer [Streams Dashboard](https://www.livepeer.com/dashboard/streams)
+3) Create a stream;
+4) Grab the stream key and replace the `{{STREAM_KEY}}` in the example below.
+
+
+```js
+const client = new Client()
 
 async function start() {
+  const streamKey = '{{STREAM_KEY}}'
+
   const stream = await navigator.mediaDevices.getUserMedia({
     video: true,
     audio: true
@@ -70,24 +79,29 @@ async function start() {
 start()
 ```
 
-In order to stream through Livepeer, you are going to need a secret `streamKey`, which can be obtained by following these steps:
-
-1) Create Livepeer Account at https://www.livepeer.com;
-2) Go to Livepeer Dashboard;
-3) Create a stream;
-4) Grab the stream key and replace it in the example `{{STREAM_KEY}}` (note that if you have multiple users streaming you'll need a backend API to create the stream through Livepeer API and return stream key for each of them. Check out [Livepeer API Documentation](https://livepeer.com/docs/guides) on how to [create a stream](https://livepeer.com/docs/guides/start-live-streaming/create-a-stream));
-
-For a full working example, checkout this awesome project: https://github.com/victorges/justcast.it
+> **NOTE:** If you have multiple streaming users you will need a separate
+> `streamKey` for each of them. So you should have a backend service
+> programmatically create a stream through Livepeer API and return the
+> `streamKey` for your front-end. Check out [Livepeer API
+> Documentation](https://livepeer.com/docs/guides) on how to [get an API
+> key](https://livepeer.com/docs/guides/start-live-streaming/api-key) and then
+> how to [create a stream](https://livepeer.com/docs/guides/start-live-streaming/create-a-stream).
 
 ## Examples
 
-The examples folder at the root of this repo contains two projects: [webrtmp-static](examples/webrtmp-static), implemented in HTML, CSS and JavaScript and [webrtmp-react](examples/webrtmp-react), implemented with React (created using [create-react-app](https://github.com/facebook/create-react-app)).
+The `examples` folder at the root of this repository contains two projects:
+ - [webrtmp-static](examples/webrtmp-static), implemented in vanilla HTML, CSS
+   and JavaScript. Check it out on
+   [CodePen](https://codepen.io/samuelmtimbo/pen/QWgaZGL).
+ - [webrtmp-react](examples/webrtmp-react), implemented with React (created
+   using [create-react-app](https://github.com/facebook/create-react-app)).
 
-Check out this [webrtmp-static on CodePen](https://codepen.io/samuelmtimbo/pen/QWgaZGL).
+For a full working example, check out [justcast.it](https://justcast.it) ([source
+code](https://github.com/victorges/justcast.it)).
 
 ## Contributing
 
-Pull Requests are welcome.
+Pull Requests are always welcome!
 
 ## License
 
