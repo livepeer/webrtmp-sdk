@@ -15,7 +15,7 @@ function App() {
         video: true,
         audio: true,
       })
-  
+
       videoEl.current.srcObject = stream.current
       videoEl.current.play()
     })()
@@ -33,9 +33,7 @@ function App() {
       return
     }
 
-    const client = new Client({
-      baseUrl: 'fly.justcast.it'
-    })
+    const client = new Client()
 
     const session = client.cast(stream.current, streamKey)
 

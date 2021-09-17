@@ -32,9 +32,7 @@ button.onclick = () => {
     return
   }
 
-  const client = new Client({
-    baseUrl: 'fly.justcast.it'
-  })
+  const client = new Client()
 
   const session = client.cast(stream, streamKey)
 
