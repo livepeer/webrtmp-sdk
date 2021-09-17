@@ -4,7 +4,7 @@ JavaScript SDK for streaming media via RTMP from the Web. Originally designed
 for [Livepeer.com](livepeer.com), but can be used for any other service by
 running your own [webrtmp-server](https://github.com/livepeer/webrtmp-server).
 
-> This SDK works best on Chrome Desktop, as it currently only supports WebSocket on H.264-capable browsers. We are working on WebRTC support to allow the use of non-Chrome and non-Desktop browsers. Check out [Browser Support](#browser-support) section for more.
+> This SDK works best on Chrome Desktop, as it currently only supports WebSocket on H.264-capable browsers. We are working on WebRTC support to allow the use of non-Chrome and non-Desktop browsers. Check out the [Browser Support](#browser-support) section for more.
 
 
 ## Installation
