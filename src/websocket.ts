@@ -1,4 +1,11 @@
+import { EventEmitter } from 'events'
 import { CastSession } from './CastSession'
+
+export class WebSocketError extends Error {
+  constructor(public code: number, message?: string) {
+    super(message)
+  }
+}
 
 function getMimeType(): string | null {
   const types = [
@@ -98,9 +105,7 @@ function castViaWebSocket(
     videoBitsPerSecond: 3 * 1024 * 1024,
   })
 
-  const cast = new CastSession(() => {
-    stop_recording(recorder, socket)
-  })
+  const cast = new CastSession(() => stop_recording(recorder, socket))
 
   let connected = false
 
@@ -126,7 +131,7 @@ function castViaWebSocket(
     stop_recording(recorder, socket)
 
     if (code !== 1000) {
-      cast.emit('error', code === 1006)
+      cast.emit('error', new WebSocketError(code, 'abnormal websocket closure'))
     }
 
     cast.emit('close')

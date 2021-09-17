@@ -1,3 +1,4 @@
+import { EventEmitter } from 'events'
 import { CastSession } from './CastSession'
 
 async function iceHandshake(
@@ -44,9 +45,7 @@ function castViaWebRTC(
     ],
   })
 
-  const cast = new CastSession(() => {
-    pc.close()
-  })
+  const cast = new CastSession(() => pc.close())
 
   stream.getTracks().forEach((track) => pc.addTrack(track, stream))
 
