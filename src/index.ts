@@ -5,9 +5,9 @@ import castViaWebSocket from './websocket'
 export type Protocol = 'ws' | 'wrtc' | 'auto'
 
 export class Client {
-  private secure: boolean
-  private baseUrl: string
-  private transport: Protocol
+  private readonly secure: boolean
+  private readonly baseUrl: string
+  private readonly transport: Protocol
 
   constructor(
     opt: {
