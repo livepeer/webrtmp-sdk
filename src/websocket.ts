@@ -105,10 +105,7 @@ function castViaWebSocket(
     videoBitsPerSecond: 3 * 1024 * 1024,
   })
 
-  const emitter = new EventEmitter()
-  const cast = new CastSession(emitter, () => {
-    stop_recording(recorder, socket)
-  })
+  const cast = new CastSession(() => stop_recording(recorder, socket))
 
   let connected = false
 
@@ -125,7 +122,7 @@ function castViaWebSocket(
 
     start_media_recorder(recorder)
 
-    emitter.emit('open')
+    cast.emit('open')
   })
 
   socket.addEventListener('close', ({ code, reason }) => {
@@ -134,13 +131,10 @@ function castViaWebSocket(
     stop_recording(recorder, socket)
 
     if (code !== 1000) {
-      emitter.emit(
-        'error',
-        new WebSocketError(code, 'abnormal websocket closure')
-      )
+      cast.emit('error', new WebSocketError(code, 'abnormal websocket closure'))
     }
 
-    emitter.emit('close')
+    cast.emit('close')
   })
 
   return cast

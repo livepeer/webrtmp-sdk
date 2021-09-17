@@ -1,19 +1,15 @@
 import { EventEmitter, Listener } from 'events'
 
-export class CastSession {
-  constructor(private _emitter: EventEmitter, private _closeFunc: () => void) {}
+export class CastSession extends EventEmitter {
+  constructor(private _closeFunc: () => void) {
+    super()
+  }
 
   on(type: 'open', listener: () => void): this
   on(type: 'close', listener: () => void): this
   on(type: 'error', listener: (err: Error) => void): this
-  on(type: string, listener: Listener): this {
-    this._emitter.on(type, listener)
-    return this
-  }
-
-  off(type: string, listener: Listener): this {
-    this._emitter.off(type, listener)
-    return this
+  on(type: 'open' | 'close' | 'error', listener: Listener): this {
+    return super.on(type, listener)
   }
 
   close() {

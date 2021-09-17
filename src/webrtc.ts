@@ -45,10 +45,7 @@ function castViaWebRTC(
     ],
   })
 
-  const emitter = new EventEmitter()
-  const cast = new CastSession(emitter, () => {
-    pc.close()
-  })
+  const cast = new CastSession(() => pc.close())
 
   stream.getTracks().forEach((track) => pc.addTrack(track, stream))
 
@@ -71,7 +68,7 @@ function castViaWebRTC(
         await pc.setRemoteDescription(remoteDesc)
       }
     } catch (err) {
-      emitter.emit('error', err)
+      cast.emit('error', err)
     }
   }
 
@@ -80,13 +77,13 @@ function castViaWebRTC(
 
     switch (state) {
       case 'connected':
-        emitter.emit('open')
+        cast.emit('open')
         break
       case 'closed':
-        emitter.emit('closed')
+        cast.emit('closed')
         break
       case 'failed':
-        emitter.emit('error', new Error('WebRTC connection failed.'))
+        cast.emit('error', new Error('WebRTC connection failed.'))
         break
     }
   }
@@ -96,7 +93,7 @@ function castViaWebRTC(
       const offer = await pc.createOffer()
       await pc.setLocalDescription(offer)
     } catch (err) {
-      emitter.emit('error', err)
+      cast.emit('error', err)
     }
   }
 
