@@ -5,9 +5,9 @@ import castViaWebSocket from './websocket'
 export type Protocol = 'ws' | 'wrtc' | 'auto'
 
 export class Client {
-  private secure: boolean = false
-  private baseUrl: string = 'origin.livepeer.com/webrtmp'
-  private transport: Protocol = 'ws'
+  private secure: boolean
+  private baseUrl: string
+  private transport: Protocol
 
   constructor(
     opt: {
@@ -45,3 +45,4 @@ export class Client {
 }
 
 export { CastSession } from './CastSession'
+export { WebSocketError } from './websocket'
