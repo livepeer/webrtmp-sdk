@@ -83,6 +83,9 @@ function castViaWebRTC(
       case 'closed':
         cast.emit('closed')
         break
+      case 'failed':
+        cast.emit('error', new Error('WebRTC connection failed.'))
+        break
     }
   }
 
