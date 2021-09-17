@@ -1407,10 +1407,10 @@
     "@types/yargs" "^16.0.0"
     chalk "^4.0.0"
 
-"@livepeer/webrtmp-sdk@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@livepeer/webrtmp-sdk/-/webrtmp-sdk-0.1.0.tgz#f5a97c0eb2baef882320b971b05a02e2baaf10df"
-  integrity sha512-wk4tCoHbRsV+T1Bpbxi9ZeFk07pWg92SRF+sgCADX9VNy3vhF7E89v0WUliIPcL4xdFxA5TY7LMuZ+821Vim3A==
+"@livepeer/webrtmp-sdk@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@livepeer/webrtmp-sdk/-/webrtmp-sdk-0.2.1.tgz#a5e4aae5852ff8f8167950bdc1e5c9771312ce1a"
+  integrity sha512-989TANpG7/JXcyerotpYZAEq4mehHGopF0CJzTU/MPrlSNGSYEka/y0+6FaX6ZG8Kh/cLr8TxIyWJnXI54V5uw==
   dependencies:
     events "3.3.0"
 
