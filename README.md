@@ -48,7 +48,7 @@ In order to stream through Livepeer, you are going to need a secret `streamKey`,
 which can be obtained by following these steps:
 
 1) Create Livepeer Account at [livepeer.com](https://www.livepeer.com);
-2) Go to the Livepeer [Streams Dashboard](https://www.livepeer.com/dashboard/streams)
+2) Go to the Livepeer [Streams Dashboard](https://www.livepeer.com/dashboard/streams);
 3) Create a stream;
 4) Grab the stream key and replace the `{{STREAM_KEY}}` in the example below.
 
