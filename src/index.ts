@@ -32,9 +32,13 @@ export class Client {
       throw new Error('Invalid streamKey.')
     }
 
-    if (this.transport === 'ws' || this.transport === 'auto') {
+    let { transport } = this
+    if (transport === 'auto') {
+      transport = isSupported() ? 'ws' : 'wrtc'
+    }
+    if (transport === 'ws') {
       return castViaWebSocket(this.secure, this.baseUrl, stream, streamKey)
-    } else if (this.transport === 'wrtc') {
+    } else if (transport === 'wrtc') {
       return castViaWebRTC(this.secure, this.baseUrl, stream, streamKey)
     } else {
       throw new Error(
@@ -44,6 +48,11 @@ export class Client {
   }
 }
 
+// isSupported returns whether the default protocol works reliably in the
+// current browser. Currently, the default protocol is WebSocket and is only
+// supported in H.264 capable browsers. You can use the experimental `auto`
+// protocol that switches to WebRTC in case H.264 is not available and ignore
+// this function. WebRTC does not work reliably, do not use in production.
 export function isSupported(): boolean {
   const mimeType = getMimeType()
   const supported = mimeType.includes('h264')
