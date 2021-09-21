@@ -14,7 +14,7 @@ running your own [webrtmp-server](https://github.com/livepeer/webrtmp-server).
 Add the following script tag to the header of your HTML file:
 
 ```html
-<script src="https://unpkg.com/@livepeer/webrtmp-sdk@0.2.2/dist/index.js"></script>
+<script src="https://unpkg.com/@livepeer/webrtmp-sdk@0.2.3/dist/index.js"></script>
 ```
 
 The API will be available as a global named `webRTMP`:
