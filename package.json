@@ -1,6 +1,6 @@
 {
   "name": "@livepeer/webrtmp-sdk",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "JavaScript SDK for streaming media via RTMP from the Web.",
   "main": "lib/index.js",
   "repository": "git@github.com:livepeer/webrtmp-sdk.git",
