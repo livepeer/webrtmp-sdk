@@ -1,4 +1,6 @@
-# webrtmp-sdk [![npm version](https://badge.fury.io/js/@livepeer%2Fwebrtmp-sdk.svg)](https://badge.fury.io/js/@livepeer%2Fwebrtmp-sdk)
+# [[ DEPRECATED ]] webrtmp-sdk [![npm version](https://badge.fury.io/js/@livepeer%2Fwebrtmp-sdk.svg)](https://badge.fury.io/js/@livepeer%2Fwebrtmp-sdk)
+
+> THIS SDK IS DEPRECATED. REACT DEVELOPERS SHOULD USE THE [NEW BROADCAST SDK](https://docs.livepeer.org/reference/livepeer-js/Broadcast), AND ALL OTHER DEVELOPERS SHOULD FOLLOW THIS [GUIDE ON WEBRTC BROADCASTING](https://docs.livepeer.org/guides/developing/stream-via-browser.en-US#adding-broadcasting-with-plain-webrtc)
 
 JavaScript SDK for streaming media via RTMP from the Web. Originally designed
 for [Livepeer.com](livepeer.com), but can be used for any other service by
